@@ -1,0 +1,87 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gufos - Categorias</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="img/icon-login.png" alt="Logo do Gufos">
+            <nav>
+                <ul>
+                    <!-- Acessibilidade: todos os links devem ter title -->
+                    <li><a href="home.html" title="Gufos home">Home</a></li>
+                    <li><a href="eventos.html" title="Gufos eventos">Eventos</a></li>
+                    <li><a href="categorias.html" title="Gufos categorias">Categorias</a></li>
+                    <li><a href="usuarios.html" title="Gufos usuarios">Usuários</a></li>
+                    <li><a href="login.html" title="Gufos login">Sair</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="card">
+                <h3>Lista de categorias</h3>
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Categoria</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Workshop</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Meetup</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Palestra</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <nav>
+                                    <ul>
+                                        <li>Anterior</li>
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>Próximo</li>
+                                    </ul>
+                                </nav>
+                            </td> <!--mesclar duas colunas-desu-->
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Cadastrar categorias</h3>
+                <form method="POST" id="form_cadastro">
+                    <!-- no formulário, incluir method: get, questão de segurança. não usar post em busca, péssima ux-->
+                    <label>Categoria</label>
+                    <input type="text" placeholder="Digite a categoria..." aria-label="Digitar a categoria" name="categoria" required>
+                    <!-- aria-label: Acessibilidade no formulário -->
+                    <!-- placeholder: máscara, value: conteúdo -->
+                    <!-- abraçando toda a sentença com label com radio button, toda a palavra serve como botão, útil para mobile -->
+                    <!-- name e value, são importantes em forms -->
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>ESCOLA SENAI DE INFORMÁTICA ©2019</p>
+        </div>
+    </footer>
+</body>
+</html>
