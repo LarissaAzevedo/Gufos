@@ -26,7 +26,7 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
+                optionsBuilder.UseSqlServer("Server=N-1S-DEV-02\\SQLEXPRESS; Database=Gufos; User Id=sa; Password=132");
             }
         }
 
