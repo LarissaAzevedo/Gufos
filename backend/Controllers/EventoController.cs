@@ -22,7 +22,7 @@ namespace backend.Controllers {
         //método assincrono executa vários processos simultaneamente
         [HttpGet]
         public async Task<ActionResult<List<Evento>>> Get () {
-            var eventos = await _contexto.Evento.Include("Categoria").Include("Localizacao").FirstOrDefaultAsync();
+            var eventos = await _contexto.Evento.Include("Categoria").Include("Localizacao").ToListAsync();
 
             if (eventos == null) {
                 return NotFound ();
@@ -30,12 +30,11 @@ namespace backend.Controllers {
             return eventos;
 
         }
-        //ta errado umas coisas, preciso arrumar
 
         //GET: api/Evento/2
         [HttpGet ("{id}")]
         public async Task<ActionResult<Evento>> Get (int id) {
-            var evento = await _contexto.Evento.FindAsync (id);
+            var evento = await _contexto.Evento.Include("Categoria").Include("Localizacao").FirstOrDefaultAsync(e => e.EventoId == id);
 
             if (evento == null) {
                 return NotFound ();
