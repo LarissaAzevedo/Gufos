@@ -5,73 +5,73 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers {
-    //definindo a rota do controller e informando que é um controle de API
+     //definindo a rota do controller e informando que é um controle de API
     [Route ("api/[Controller]")]
     [ApiController]
-    public class LocalizacaoController : ControllerBase {
+    public class PresencaController : ControllerBase {
         //instanciando o contexto
         GufosContext _contexto = new GufosContext ();
 
         //iniciando o método REST (CRUD)
 
-        //GET: api/Localizacao
+        //GET: api/Presenca
         //método assincrono executa vários processos simultaneamente
         [HttpGet]
-        public async Task<ActionResult<List<Localizacao>>> Get () {
-            var Localizacaos = await _contexto.Localizacao.ToListAsync ();
+        public async Task<ActionResult<List<Presenca>>> Get () {
+            var Presencas = await _contexto.Presenca.ToListAsync ();
 
-            if (Localizacaos == null) {
+            if (Presencas == null) {
                 return NotFound ();
             }
-            return Localizacaos;
+            return Presencas;
 
         }
 
-        //GET: api/Localizacao/2
+        //GET: api/Presenca/2
         [HttpGet ("{id}")]
-        public async Task<ActionResult<Localizacao>> Get (int id) {
-            var Localizacao = await _contexto.Localizacao.FindAsync (id);
+        public async Task<ActionResult<Presenca>> Get (int id) {
+            var Presenca = await _contexto.Presenca.FindAsync (id);
 
-            if (Localizacao == null) {
+            if (Presenca == null) {
                 return NotFound ();
             }
-            return Localizacao;
+            return Presenca;
 
         }
 
-        //POST api/Localizacao
+        //POST api/Presenca
         [HttpPost]
-        public async Task<ActionResult<Localizacao>> Post (Localizacao Localizacao) {
+        public async Task<ActionResult<Presenca>> Post (Presenca Presenca) {
             try {
-                //adicionando o objeto Localizacao dentro do contexto
+                //adicionando o objeto Presenca dentro do contexto
                 //salva as mudanças feitas
                 //tratamento de ataques de Sql Injection
-                await _contexto.AddAsync (Localizacao);
+                await _contexto.AddAsync (Presenca);
                 await _contexto.SaveChangesAsync ();
             } catch (DbUpdateConcurrencyException) {
                 throw;
             }
-            return Localizacao;
+            return Presenca;
         }
 
         [HttpPut ("{id}")]
-        public async Task<ActionResult> Put (int id, Localizacao Localizacao) {
+        public async Task<ActionResult> Put (int id, Presenca Presenca) {
 
-            if (id != Localizacao.LocalizacaoId) {
+            if (id != Presenca.PresencaId) {
                 return BadRequest ();
             }
 
             //dps de verificada a entrada, faz uma comparação dos atributos que foram mudados
-            _contexto.Entry (Localizacao).State = EntityState.Modified;
+            _contexto.Entry (Presenca).State = EntityState.Modified;
 
             try {
                 await _contexto.SaveChangesAsync ();
             } catch (DbUpdateConcurrencyException) {
 
                 //verificando se o objeto inserido realmente existe no banco
-                var Localizacao_valida = await _contexto.Localizacao.FindAsync (id);
+                var Presenca_valida = await _contexto.Presenca.FindAsync (id);
 
-                if (Localizacao_valida == null) {
+                if (Presenca_valida == null) {
                     return NotFound ();
                 } else {
                     throw;
@@ -81,20 +81,20 @@ namespace backend.Controllers {
             return NoContent ();
         }
 
-        //DELETE api/Localizacao/id
+        //DELETE api/Presenca/id
         [HttpDelete ("{id}")]
-        public async Task<ActionResult<Localizacao>> Delete (int id) {
+        public async Task<ActionResult<Presenca>> Delete (int id) {
 
-            var Localizacao = await _contexto.Localizacao.FindAsync (id);
-            if (Localizacao == null) {
+            var Presenca = await _contexto.Presenca.FindAsync (id);
+            if (Presenca == null) {
                 return NotFound();
             }
 
             //remove o conteúdo
-            _contexto.Localizacao.Remove(Localizacao);
+            _contexto.Presenca.Remove(Presenca);
             await _contexto.SaveChangesAsync();
 
-            return Localizacao;
+            return Presenca;
         }
 
     }
