@@ -16,6 +16,10 @@ namespace backend.Controllers {
 
         //GET: api/Usuario
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega os usuários cadastrados
+        /// </summary>
+        /// <returns>Lista de usuários</returns>
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get () {
             var Usuarios = await _contexto.Usuario.ToListAsync ();
@@ -28,6 +32,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/Usuario/2
+        /// <summary>
+        /// Pega um usuário específico 
+        /// </summary>
+        /// <param name="id">id do usuário</param>
+        /// <returns>usuário específico</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Usuario>> Get (int id) {
             var Usuario = await _contexto.Usuario.FindAsync (id);
@@ -40,6 +49,11 @@ namespace backend.Controllers {
         }
 
         //POST api/Usuario
+        /// <summary>
+        /// Adiciona um novo usuário
+        /// </summary>
+        /// <param name="Usuario">nome do usuário</param>
+        /// <returns>tabela atualizada</returns>
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post (Usuario Usuario) {
             try {
@@ -54,6 +68,12 @@ namespace backend.Controllers {
             return Usuario;
         }
 
+        /// <summary>
+        /// Atualiza a tabela
+        /// </summary>
+        /// <param name="id">id do usuário</param>
+        /// <param name="Usuario">nome do usuário</param>
+        /// <returns>tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Usuario Usuario) {
 
@@ -82,6 +102,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/Usuario/id
+        /// <summary>
+        /// Deleta um usuário específico
+        /// </summary>
+        /// <param name="id">id do usuário</param>
+        /// <returns>Tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Usuario>> Delete (int id) {
 

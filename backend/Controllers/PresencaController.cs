@@ -16,6 +16,10 @@ namespace backend.Controllers {
 
         //GET: api/Presenca
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega as presenças cadastradas
+        /// </summary>
+        /// <returns>Lista de presença</returns>
         [HttpGet]
         public async Task<ActionResult<List<Presenca>>> Get () {
             var Presencas = await _contexto.Presenca.ToListAsync ();
@@ -28,6 +32,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/Presenca/2
+        /// <summary>
+        /// Pega uma presença específica pelo is
+        /// </summary>
+        /// <param name="id">id da presença</param>
+        /// <returns>Presença específica</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Presenca>> Get (int id) {
             var Presenca = await _contexto.Presenca.FindAsync (id);
@@ -40,6 +49,11 @@ namespace backend.Controllers {
         }
 
         //POST api/Presenca
+        /// <summary>
+        /// Adiciona uma nova presença
+        /// </summary>
+        /// <param name="Presenca">nome da presença</param>
+        /// <returns>presença adicionada</returns>
         [HttpPost]
         public async Task<ActionResult<Presenca>> Post (Presenca Presenca) {
             try {
@@ -54,6 +68,12 @@ namespace backend.Controllers {
             return Presenca;
         }
 
+        /// <summary>
+        /// atualiza a tabela
+        /// </summary>
+        /// <param name="id">id da presença</param>
+        /// <param name="Presenca">nome da presença</param>
+        /// <returns>tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Presenca Presenca) {
 
@@ -82,6 +102,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/Presenca/id
+        /// <summary>
+        /// Deleta uma presença
+        /// </summary>
+        /// <param name="id">id da presença</param>
+        /// <returns>tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Presenca>> Delete (int id) {
 

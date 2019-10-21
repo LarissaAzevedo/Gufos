@@ -4,5 +4,40 @@
         <name>backend</name>
     </assembly>
     <members>
+        <member name="M:backend.Controllers.CategoriaController.Get">
+            <summary>
+            Pega as categorias cadastradas
+            </summary>
+            <returns>Lista de categorias</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriaController.Get(System.Int32)">
+            <summary>
+            Pega uma categoria cadastrada pelo id
+            </summary>
+            <param name="id">id da categoria</param>
+            <returns>Categoria específica do id</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriaController.Post(backend.Models.Categoria)">
+            <summary>
+            Salva as mudanças feitas
+            </summary>
+            <param name="categoria">Nome da categoria</param>
+            <returns>Mudanças atuais</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriaController.Put(System.Int32,backend.Models.Categoria)">
+            <summary>
+            Atualiza a tabela
+            </summary>
+            <param name="id">Id da categoria</param>
+            <param name="categoria">Nome da categoria</param>
+            <returns>Tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriaController.Delete(System.Int32)">
+            <summary>
+            Deleta um dado existente da tabela pelo id
+            </summary>
+            <param name="id">id da categoria</param>
+            <returns>Dado excluído e tabela atualizada</returns>
+        </member>
     </members>
 </doc>

@@ -20,6 +20,10 @@ namespace backend.Controllers {
 
         //GET: api/Evento
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega o evento cadastrado
+        /// </summary>
+        /// <returns>Lista de eventos</returns>
         [HttpGet]
         public async Task<ActionResult<List<Evento>>> Get () {
             var eventos = await _contexto.Evento.Include("Categoria").Include("Localizacao").ToListAsync();
@@ -32,6 +36,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/Evento/2
+        /// <summary>
+        /// Pega o evento cadastrado com um id específico
+        /// </summary>
+        /// <param name="id">id do evento</param>
+        /// <returns>Evento específico</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Evento>> Get (int id) {
             var evento = await _contexto.Evento.Include("Categoria").Include("Localizacao").FirstOrDefaultAsync(e => e.EventoId == id);
@@ -44,6 +53,11 @@ namespace backend.Controllers {
         }
 
         //POST api/evento
+        /// <summary>
+        /// Adiciona novo evento
+        /// </summary>
+        /// <param name="evento">Nome do evento</param>
+        /// <returns>Evento adicionado</returns>
         [HttpPost]
         public async Task<ActionResult<Evento>> Post (Evento evento) {
             try {
@@ -58,6 +72,12 @@ namespace backend.Controllers {
             return evento;
         }
 
+        /// <summary>
+        /// Atualiza a tabela
+        /// </summary>
+        /// <param name="id">id do evento</param>
+        /// <param name="evento">Nome do evento</param>
+        /// <returns>Tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Evento evento) {
 
@@ -86,6 +106,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/evento/id
+        /// <summary>
+        /// Deleta um evento da tabela
+        /// </summary>
+        /// <param name="id">id do evento</param>
+        /// <returns>Tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Evento>> Delete (int id) {
 

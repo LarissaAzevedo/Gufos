@@ -16,6 +16,10 @@ namespace backend.Controllers {
 
         //GET: api/Localizacao
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega as localizações cadastradas
+        /// </summary>
+        /// <returns>Lista de localizações</returns>
         [HttpGet]
         public async Task<ActionResult<List<Localizacao>>> Get () {
             var Localizacaos = await _contexto.Localizacao.ToListAsync ();
@@ -28,6 +32,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/Localizacao/2
+        /// <summary>
+        /// Pega uma localização específica pelo id
+        /// </summary>
+        /// <param name="id">id da localização</param>
+        /// <returns>localização espefícica</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Localizacao>> Get (int id) {
             var Localizacao = await _contexto.Localizacao.FindAsync (id);
@@ -40,6 +49,11 @@ namespace backend.Controllers {
         }
 
         //POST api/Localizacao
+        /// <summary>
+        /// Adiciona uma nova localização
+        /// </summary>
+        /// <param name="Localizacao">Nome da localização</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Localizacao>> Post (Localizacao Localizacao) {
             try {
@@ -54,6 +68,12 @@ namespace backend.Controllers {
             return Localizacao;
         }
 
+        /// <summary>
+        /// Atualiza a tabela
+        /// </summary>
+        /// <param name="id">id da localização</param>
+        /// <param name="Localizacao">Nome da localização</param>
+        /// <returns>Tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Localizacao Localizacao) {
 
@@ -82,6 +102,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/Localizacao/id
+        /// <summary>
+        /// deleta uma localização
+        /// </summary>
+        /// <param name="id">id da localizacao</param>
+        /// <returns>tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Localizacao>> Delete (int id) {
 

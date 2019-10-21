@@ -16,6 +16,10 @@ namespace backend.Controllers {
 
         //GET: api/TipoUsuario
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega os tipos de usuário cadastrados
+        /// </summary>
+        /// <returns>Lista de usuários</returns>
         [HttpGet]
         public async Task<ActionResult<List<TipoUsuario>>> Get () {
             var TipoUsuarios = await _contexto.TipoUsuario.ToListAsync ();
@@ -28,6 +32,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/TipoUsuario/2
+        /// <summary>
+        /// Pega um tipo de usuário específico pelo id
+        /// </summary>
+        /// <param name="id">id do tipo do usuário</param>
+        /// <returns>tipo de usuário específiico</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<TipoUsuario>> Get (int id) {
             var TipoUsuario = await _contexto.TipoUsuario.FindAsync (id);
@@ -40,6 +49,11 @@ namespace backend.Controllers {
         }
 
         //POST api/TipoUsuario
+        /// <summary>
+        /// Adiciona um novo tipo de usuário
+        /// </summary>
+        /// <param name="TipoUsuario">nome do tipo de usuário</param>
+        /// <returns>tabela tualizada</returns>
         [HttpPost]
         public async Task<ActionResult<TipoUsuario>> Post (TipoUsuario TipoUsuario) {
             try {
@@ -54,6 +68,12 @@ namespace backend.Controllers {
             return TipoUsuario;
         }
 
+        /// <summary>
+        /// Atualiza a tabela
+        /// </summary>
+        /// <param name="id">id do tipo de usuário</param>
+        /// <param name="TipoUsuario">nome do tipo de usuário</param>
+        /// <returns>tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, TipoUsuario TipoUsuario) {
 
@@ -82,6 +102,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/TipoUsuario/id
+        /// <summary>
+        /// Deleta um tipo de usuário específico
+        /// </summary>
+        /// <param name="id">id do tipo de usuário</param>
+        /// <returns>tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<TipoUsuario>> Delete (int id) {
 

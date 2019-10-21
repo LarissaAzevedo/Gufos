@@ -17,6 +17,10 @@ namespace backend.Controllers {
 
         //GET: api/Categoria
         //método assincrono executa vários processos simultaneamente
+        /// <summary>
+        /// Pega as categorias cadastradas
+        /// </summary>
+        /// <returns>Lista de categorias</returns>
         [HttpGet]
         public async Task<ActionResult<List<Categoria>>> Get () {
             var categorias = await _contexto.Categoria.ToListAsync ();
@@ -29,6 +33,11 @@ namespace backend.Controllers {
         }
 
         //GET: api/Categoria/2
+        /// <summary>
+        /// Pega uma categoria cadastrada pelo id
+        /// </summary>
+        /// <param name="id">id da categoria</param>
+        /// <returns>Categoria específica do id</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Categoria>> Get (int id) {
             var categoria = await _contexto.Categoria.FindAsync (id);
@@ -41,6 +50,11 @@ namespace backend.Controllers {
         }
 
         //POST api/categoria
+        /// <summary>
+        /// Adiciona uma nova categoria
+        /// </summary>
+        /// <param name="categoria">Nome da categoria</param>
+        /// <returns>Categoria adicionada</returns>
         [HttpPost]
         public async Task<ActionResult<Categoria>> Post (Categoria categoria) {
             try {
@@ -54,7 +68,12 @@ namespace backend.Controllers {
             }
             return categoria;
         }
-
+        /// <summary>
+        /// Atualiza a tabela
+        /// </summary>
+        /// <param name="id">Id da categoria</param>
+        /// <param name="categoria">Nome da categoria</param>
+        /// <returns>Tabela atualizada</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Categoria categoria) {
 
@@ -83,6 +102,11 @@ namespace backend.Controllers {
         }
 
         //DELETE api/categoria/id
+        /// <summary>
+        /// Deleta um dado existente da tabela pelo id
+        /// </summary>
+        /// <param name="id">id da categoria</param>
+        /// <returns>Dado excluído e tabela atualizada</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Categoria>> Delete (int id) {
 
