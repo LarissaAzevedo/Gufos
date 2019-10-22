@@ -69,7 +69,7 @@ namespace backend.Controllers {
         }
 
         /// <summary>
-        /// Atualiza a tabela
+        /// Atualiza os dados de um usuário específico
         /// </summary>
         /// <param name="id">id do usuário</param>
         /// <param name="Usuario">nome do usuário</param>

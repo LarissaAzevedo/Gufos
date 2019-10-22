@@ -57,11 +57,6 @@ namespace backend {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;
         }
-
-        public Startup (IConfiguration configuration) {
-            this.Configuration = configuration;
-
-        }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -113,6 +108,9 @@ namespace backend {
             app.UseSwaggerUI (c => {
                 c.SwaggerEndpoint ("/swagger/V1/swagger.json", "API V1");
             });
+
+            //usando efetivamente a autenticação
+            app.UseAuthentication();
 
             app.UseHttpsRedirection ();
 

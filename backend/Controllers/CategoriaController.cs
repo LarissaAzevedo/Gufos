@@ -34,7 +34,7 @@ namespace backend.Controllers {
 
         //GET: api/Categoria/2
         /// <summary>
-        /// Pega uma categoria cadastrada pelo id
+        /// Pega uma categoria específica
         /// </summary>
         /// <param name="id">id da categoria</param>
         /// <returns>Categoria específica do id</returns>
@@ -69,7 +69,7 @@ namespace backend.Controllers {
             return categoria;
         }
         /// <summary>
-        /// Atualiza a tabela
+        /// Atualiza os dados de uma categoria específica
         /// </summary>
         /// <param name="id">Id da categoria</param>
         /// <param name="categoria">Nome da categoria</param>
@@ -103,7 +103,7 @@ namespace backend.Controllers {
 
         //DELETE api/categoria/id
         /// <summary>
-        /// Deleta um dado existente da tabela pelo id
+        /// Deleta um dado específico
         /// </summary>
         /// <param name="id">id da categoria</param>
         /// <returns>Dado excluído e tabela atualizada</returns>

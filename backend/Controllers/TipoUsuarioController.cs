@@ -19,7 +19,7 @@ namespace backend.Controllers {
         /// <summary>
         /// Pega os tipos de usuário cadastrados
         /// </summary>
-        /// <returns>Lista de usuários</returns>
+        /// <returns>Lista de tipos de usuários</returns>
         [HttpGet]
         public async Task<ActionResult<List<TipoUsuario>>> Get () {
             var TipoUsuarios = await _contexto.TipoUsuario.ToListAsync ();
@@ -33,7 +33,7 @@ namespace backend.Controllers {
 
         //GET: api/TipoUsuario/2
         /// <summary>
-        /// Pega um tipo de usuário específico pelo id
+        /// Pega um tipo de usuário específico
         /// </summary>
         /// <param name="id">id do tipo do usuário</param>
         /// <returns>tipo de usuário específiico</returns>
@@ -69,7 +69,7 @@ namespace backend.Controllers {
         }
 
         /// <summary>
-        /// Atualiza a tabela
+        /// Atualiza os dados de um tipo de usuário específico
         /// </summary>
         /// <param name="id">id do tipo de usuário</param>
         /// <param name="TipoUsuario">nome do tipo de usuário</param>

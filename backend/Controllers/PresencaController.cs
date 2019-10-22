@@ -33,7 +33,7 @@ namespace backend.Controllers {
 
         //GET: api/Presenca/2
         /// <summary>
-        /// Pega uma presença específica pelo is
+        /// Pega uma presença específica
         /// </summary>
         /// <param name="id">id da presença</param>
         /// <returns>Presença específica</returns>
@@ -69,7 +69,7 @@ namespace backend.Controllers {
         }
 
         /// <summary>
-        /// atualiza a tabela
+        /// atualiza os dados de uma presença específica
         /// </summary>
         /// <param name="id">id da presença</param>
         /// <param name="Presenca">nome da presença</param>
@@ -103,7 +103,7 @@ namespace backend.Controllers {
 
         //DELETE api/Presenca/id
         /// <summary>
-        /// Deleta uma presença
+        /// Deleta uma presença específica
         /// </summary>
         /// <param name="id">id da presença</param>
         /// <returns>tabela atualizada</returns>

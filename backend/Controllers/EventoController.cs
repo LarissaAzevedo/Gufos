@@ -21,7 +21,7 @@ namespace backend.Controllers {
         //GET: api/Evento
         //método assincrono executa vários processos simultaneamente
         /// <summary>
-        /// Pega o evento cadastrado
+        /// Pega os eventos cadastrado
         /// </summary>
         /// <returns>Lista de eventos</returns>
         [HttpGet]
@@ -37,7 +37,7 @@ namespace backend.Controllers {
 
         //GET: api/Evento/2
         /// <summary>
-        /// Pega o evento cadastrado com um id específico
+        /// Pega um evento específico
         /// </summary>
         /// <param name="id">id do evento</param>
         /// <returns>Evento específico</returns>
@@ -54,7 +54,7 @@ namespace backend.Controllers {
 
         //POST api/evento
         /// <summary>
-        /// Adiciona novo evento
+        /// Adiciona um novo evento
         /// </summary>
         /// <param name="evento">Nome do evento</param>
         /// <returns>Evento adicionado</returns>
@@ -73,11 +73,11 @@ namespace backend.Controllers {
         }
 
         /// <summary>
-        /// Atualiza a tabela
+        /// Atualiza um dado de um evento específico
         /// </summary>
         /// <param name="id">id do evento</param>
         /// <param name="evento">Nome do evento</param>
-        /// <returns>Tabela atualizada</returns>
+        /// <returns>Evento atualizado</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Evento evento) {
 
@@ -110,7 +110,7 @@ namespace backend.Controllers {
         /// Deleta um evento da tabela
         /// </summary>
         /// <param name="id">id do evento</param>
-        /// <returns>Tabela atualizada</returns>
+        /// <returns>Dado deletado</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Evento>> Delete (int id) {
 

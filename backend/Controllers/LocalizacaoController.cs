@@ -33,7 +33,7 @@ namespace backend.Controllers {
 
         //GET: api/Localizacao/2
         /// <summary>
-        /// Pega uma localização específica pelo id
+        /// Pega os dados de uma localização específica
         /// </summary>
         /// <param name="id">id da localização</param>
         /// <returns>localização espefícica</returns>
@@ -69,11 +69,11 @@ namespace backend.Controllers {
         }
 
         /// <summary>
-        /// Atualiza a tabela
+        /// Atualiza os dados de uma determinada localização
         /// </summary>
         /// <param name="id">id da localização</param>
         /// <param name="Localizacao">Nome da localização</param>
-        /// <returns>Tabela atualizada</returns>
+        /// <returns>dados atualizados</returns>
         [HttpPut ("{id}")]
         public async Task<ActionResult> Put (int id, Localizacao Localizacao) {
 
@@ -103,10 +103,10 @@ namespace backend.Controllers {
 
         //DELETE api/Localizacao/id
         /// <summary>
-        /// deleta uma localização
+        /// deleta uma localização específica
         /// </summary>
         /// <param name="id">id da localizacao</param>
-        /// <returns>tabela atualizada</returns>
+        /// <returns>dado deletado</returns>
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Localizacao>> Delete (int id) {
 

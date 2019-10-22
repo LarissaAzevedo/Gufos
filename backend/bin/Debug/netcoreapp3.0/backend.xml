@@ -12,21 +12,21 @@
         </member>
         <member name="M:backend.Controllers.CategoriaController.Get(System.Int32)">
             <summary>
-            Pega uma categoria cadastrada pelo id
+            Pega uma categoria específica
             </summary>
             <param name="id">id da categoria</param>
             <returns>Categoria específica do id</returns>
         </member>
         <member name="M:backend.Controllers.CategoriaController.Post(backend.Models.Categoria)">
             <summary>
-            Salva as mudanças feitas
+            Adiciona uma nova categoria
             </summary>
             <param name="categoria">Nome da categoria</param>
-            <returns>Mudanças atuais</returns>
+            <returns>Categoria adicionada</returns>
         </member>
         <member name="M:backend.Controllers.CategoriaController.Put(System.Int32,backend.Models.Categoria)">
             <summary>
-            Atualiza a tabela
+            Atualiza os dados de uma categoria específica
             </summary>
             <param name="id">Id da categoria</param>
             <param name="categoria">Nome da categoria</param>
@@ -34,10 +34,185 @@
         </member>
         <member name="M:backend.Controllers.CategoriaController.Delete(System.Int32)">
             <summary>
-            Deleta um dado existente da tabela pelo id
+            Deleta um dado específico
             </summary>
             <param name="id">id da categoria</param>
             <returns>Dado excluído e tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.EventoController.Get">
+            <summary>
+            Pega os eventos cadastrado
+            </summary>
+            <returns>Lista de eventos</returns>
+        </member>
+        <member name="M:backend.Controllers.EventoController.Get(System.Int32)">
+            <summary>
+            Pega um evento específico
+            </summary>
+            <param name="id">id do evento</param>
+            <returns>Evento específico</returns>
+        </member>
+        <member name="M:backend.Controllers.EventoController.Post(backend.Models.Evento)">
+            <summary>
+            Adiciona um novo evento
+            </summary>
+            <param name="evento">Nome do evento</param>
+            <returns>Evento adicionado</returns>
+        </member>
+        <member name="M:backend.Controllers.EventoController.Put(System.Int32,backend.Models.Evento)">
+            <summary>
+            Atualiza um dado de um evento específico
+            </summary>
+            <param name="id">id do evento</param>
+            <param name="evento">Nome do evento</param>
+            <returns>Evento atualizado</returns>
+        </member>
+        <member name="M:backend.Controllers.EventoController.Delete(System.Int32)">
+            <summary>
+            Deleta um evento da tabela
+            </summary>
+            <param name="id">id do evento</param>
+            <returns>Dado deletado</returns>
+        </member>
+        <member name="M:backend.Controllers.LocalizacaoController.Get">
+            <summary>
+            Pega as localizações cadastradas
+            </summary>
+            <returns>Lista de localizações</returns>
+        </member>
+        <member name="M:backend.Controllers.LocalizacaoController.Get(System.Int32)">
+            <summary>
+            Pega os dados de uma localização específica
+            </summary>
+            <param name="id">id da localização</param>
+            <returns>localização espefícica</returns>
+        </member>
+        <member name="M:backend.Controllers.LocalizacaoController.Post(backend.Models.Localizacao)">
+            <summary>
+            Adiciona uma nova localização
+            </summary>
+            <param name="Localizacao">Nome da localização</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.LocalizacaoController.Put(System.Int32,backend.Models.Localizacao)">
+            <summary>
+            Atualiza os dados de uma determinada localização
+            </summary>
+            <param name="id">id da localização</param>
+            <param name="Localizacao">Nome da localização</param>
+            <returns>dados atualizados</returns>
+        </member>
+        <member name="M:backend.Controllers.LocalizacaoController.Delete(System.Int32)">
+            <summary>
+            deleta uma localização específica
+            </summary>
+            <param name="id">id da localizacao</param>
+            <returns>dado deletado</returns>
+        </member>
+        <member name="M:backend.Controllers.PresencaController.Get">
+            <summary>
+            Pega as presenças cadastradas
+            </summary>
+            <returns>Lista de presença</returns>
+        </member>
+        <member name="M:backend.Controllers.PresencaController.Get(System.Int32)">
+            <summary>
+            Pega uma presença específica
+            </summary>
+            <param name="id">id da presença</param>
+            <returns>Presença específica</returns>
+        </member>
+        <member name="M:backend.Controllers.PresencaController.Post(backend.Models.Presenca)">
+            <summary>
+            Adiciona uma nova presença
+            </summary>
+            <param name="Presenca">nome da presença</param>
+            <returns>presença adicionada</returns>
+        </member>
+        <member name="M:backend.Controllers.PresencaController.Put(System.Int32,backend.Models.Presenca)">
+            <summary>
+            atualiza os dados de uma presença específica
+            </summary>
+            <param name="id">id da presença</param>
+            <param name="Presenca">nome da presença</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.PresencaController.Delete(System.Int32)">
+            <summary>
+            Deleta uma presença específica
+            </summary>
+            <param name="id">id da presença</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Pega os tipos de usuário cadastrados
+            </summary>
+            <returns>Lista de tipos de usuários</returns>
+        </member>
+        <member name="M:backend.Controllers.TipoUsuarioController.Get(System.Int32)">
+            <summary>
+            Pega um tipo de usuário específico
+            </summary>
+            <param name="id">id do tipo do usuário</param>
+            <returns>tipo de usuário específiico</returns>
+        </member>
+        <member name="M:backend.Controllers.TipoUsuarioController.Post(backend.Models.TipoUsuario)">
+            <summary>
+            Adiciona um novo tipo de usuário
+            </summary>
+            <param name="TipoUsuario">nome do tipo de usuário</param>
+            <returns>tabela tualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.TipoUsuarioController.Put(System.Int32,backend.Models.TipoUsuario)">
+            <summary>
+            Atualiza os dados de um tipo de usuário específico
+            </summary>
+            <param name="id">id do tipo de usuário</param>
+            <param name="TipoUsuario">nome do tipo de usuário</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.TipoUsuarioController.Delete(System.Int32)">
+            <summary>
+            Deleta um tipo de usuário específico
+            </summary>
+            <param name="id">id do tipo de usuário</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.UsuarioController.Get">
+            <summary>
+            Pega os usuários cadastrados
+            </summary>
+            <returns>Lista de usuários</returns>
+        </member>
+        <member name="M:backend.Controllers.UsuarioController.Get(System.Int32)">
+            <summary>
+            Pega um usuário específico 
+            </summary>
+            <param name="id">id do usuário</param>
+            <returns>usuário específico</returns>
+        </member>
+        <member name="M:backend.Controllers.UsuarioController.Post(backend.Models.Usuario)">
+            <summary>
+            Adiciona um novo usuário
+            </summary>
+            <param name="Usuario">nome do usuário</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.UsuarioController.Put(System.Int32,backend.Models.Usuario)">
+            <summary>
+            Atualiza os dados de um usuário específico
+            </summary>
+            <param name="id">id do usuário</param>
+            <param name="Usuario">nome do usuário</param>
+            <returns>tabela atualizada</returns>
+        </member>
+        <member name="M:backend.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Deleta um usuário específico
+            </summary>
+            <param name="id">id do usuário</param>
+            <returns>Tabela atualizada</returns>
         </member>
     </members>
 </doc>
