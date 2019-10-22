@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace backend.Controllers {
      //definindo a rota do controller e informando que é um controle de API
     [Route ("api/[Controller]")]
     [ApiController]
+    [Authorize]
     public class UsuarioController : ControllerBase {
         //instanciando o contexto
         GufosContext _contexto = new GufosContext ();
