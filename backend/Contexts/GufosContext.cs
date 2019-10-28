@@ -1,8 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using backend.Domains;
 
-namespace backend.Models
+
+
+namespace backend.Domains
 {
     public partial class GufosContext : DbContext
     {
@@ -26,7 +29,7 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=N-1S-DEV-02\\SQLEXPRESS; Database=Gufos; User Id=sa; Password=132");
+                optionsBuilder.UseSqlServer("Server=N-1S-DEV-02\\SQLEXPRESS;Database=Gufos;User Id=sa; Password=132;");
             }
         }
 

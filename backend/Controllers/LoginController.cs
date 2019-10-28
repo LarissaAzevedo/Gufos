@@ -3,7 +3,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using backend.Models;
+using backend.Domains;
+using backend.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -31,10 +32,6 @@ namespace backend.Controllers {
             var usuario = _contexto.Usuario.FirstOrDefault (
                 u => u.Email == login.Email && u.Senha == login.Senha
             );
-
-            if (usuario != null) {
-                usuario = login;
-            }
 
             return usuario;
         }
@@ -68,6 +65,7 @@ namespace backend.Controllers {
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] Usuario login){
+            
             IActionResult response  = Unauthorized();
             var user = ValidaUsuario(login);
 

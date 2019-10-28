@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using backend.Domains;
 
-namespace backend.Models
+
+namespace backend.Domains
 {
     public partial class Localizacao
     {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using backend.Models;
+using backend.Domains;
+using backend.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +12,9 @@ namespace backend.Controllers {
     [ApiController]
     public class CategoriaController : ControllerBase {
         //instanciando o contexto
-        GufosContext _contexto = new GufosContext ();
-
+        // GufosContext _contexto = new GufosContext ();
+        CategoriaRepository _repositorio = new CategoriaRepository();
+    
         //iniciando o método REST (CRUD)
 
         //GET: api/Categoria
@@ -23,7 +25,7 @@ namespace backend.Controllers {
         /// <returns>Lista de categorias</returns>
         [HttpGet]
         public async Task<ActionResult<List<Categoria>>> Get () {
-            var categorias = await _contexto.Categoria.ToListAsync ();
+            var categorias = await _repositorio.Listar();
 
             if (categorias == null) {
                 return NotFound ();
@@ -40,7 +42,7 @@ namespace backend.Controllers {
         /// <returns>Categoria específica do id</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Categoria>> Get (int id) {
-            var categoria = await _contexto.Categoria.FindAsync (id);
+            var categoria = await _repositorio.BuscarPorId (id);
 
             if (categoria == null) {
                 return NotFound ();
@@ -58,11 +60,8 @@ namespace backend.Controllers {
         [HttpPost]
         public async Task<ActionResult<Categoria>> Post (Categoria categoria) {
             try {
-                //adicionando o objeto categoria dentro do contexto
-                //salva as mudanças feitas
-                //tratamento de ataques de Sql Injection
-                await _contexto.AddAsync (categoria);
-                await _contexto.SaveChangesAsync ();
+               await _repositorio.Salvar(categoria);
+
             } catch (DbUpdateConcurrencyException) {
                 throw;
             }
@@ -80,16 +79,14 @@ namespace backend.Controllers {
             if (id != categoria.CategoriaId) {
                 return BadRequest ();
             }
-
-            //dps de verificada a entrada, faz uma comparação dos atributos que foram mudados
-            _contexto.Entry (categoria).State = EntityState.Modified;
-
+    
             try {
-                await _contexto.SaveChangesAsync ();
+                await _repositorio.Alterar(categoria);
+                
             } catch (DbUpdateConcurrencyException) {
 
                 //verificando se o objeto inserido realmente existe no banco
-                var categoria_valida = await _contexto.Categoria.FindAsync (id);
+                var categoria_valida = await _repositorio.BuscarPorId (id);
 
                 if (categoria_valida == null) {
                     return NotFound ();
@@ -110,15 +107,12 @@ namespace backend.Controllers {
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Categoria>> Delete (int id) {
 
-            var categoria = await _contexto.Categoria.FindAsync (id);
+            var categoria = await _repositorio.BuscarPorId(id);
             if (categoria == null) {
                 return NotFound();
             }
 
-            //remove o conteúdo
-            _contexto.Categoria.Remove(categoria);
-            await _contexto.SaveChangesAsync();
-
+            await _repositorio.Excluir(categoria);
             return categoria;
         }
 

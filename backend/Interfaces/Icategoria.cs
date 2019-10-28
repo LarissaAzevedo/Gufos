@@ -1,0 +1,18 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using backend.Domains;
+
+namespace backend.Interfaces {
+    public interface Icategoria {
+        Task<List<Categoria>> Listar ();
+
+        Task<Categoria> BuscarPorId (int id);
+
+        Task<Categoria> Salvar (Categoria categoria);
+
+        Task<Categoria> Alterar (Categoria categoria);
+
+        Task<Categoria> Excluir (Categoria categoria);
+
+    }
+}

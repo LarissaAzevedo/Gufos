@@ -17,14 +17,14 @@
             <param name="id">id da categoria</param>
             <returns>Categoria específica do id</returns>
         </member>
-        <member name="M:backend.Controllers.CategoriaController.Post(backend.Models.Categoria)">
+        <member name="M:backend.Controllers.CategoriaController.Post(backend.Domains.Categoria)">
             <summary>
             Adiciona uma nova categoria
             </summary>
             <param name="categoria">Nome da categoria</param>
             <returns>Categoria adicionada</returns>
         </member>
-        <member name="M:backend.Controllers.CategoriaController.Put(System.Int32,backend.Models.Categoria)">
+        <member name="M:backend.Controllers.CategoriaController.Put(System.Int32,backend.Domains.Categoria)">
             <summary>
             Atualiza os dados de uma categoria específica
             </summary>
@@ -52,14 +52,14 @@
             <param name="id">id do evento</param>
             <returns>Evento específico</returns>
         </member>
-        <member name="M:backend.Controllers.EventoController.Post(backend.Models.Evento)">
+        <member name="M:backend.Controllers.EventoController.Post(backend.Domains.Evento)">
             <summary>
             Adiciona um novo evento
             </summary>
             <param name="evento">Nome do evento</param>
             <returns>Evento adicionado</returns>
         </member>
-        <member name="M:backend.Controllers.EventoController.Put(System.Int32,backend.Models.Evento)">
+        <member name="M:backend.Controllers.EventoController.Put(System.Int32,backend.Domains.Evento)">
             <summary>
             Atualiza um dado de um evento específico
             </summary>
@@ -87,14 +87,14 @@
             <param name="id">id da localização</param>
             <returns>localização espefícica</returns>
         </member>
-        <member name="M:backend.Controllers.LocalizacaoController.Post(backend.Models.Localizacao)">
+        <member name="M:backend.Controllers.LocalizacaoController.Post(backend.Domains.Localizacao)">
             <summary>
             Adiciona uma nova localização
             </summary>
             <param name="Localizacao">Nome da localização</param>
             <returns></returns>
         </member>
-        <member name="M:backend.Controllers.LocalizacaoController.Put(System.Int32,backend.Models.Localizacao)">
+        <member name="M:backend.Controllers.LocalizacaoController.Put(System.Int32,backend.Domains.Localizacao)">
             <summary>
             Atualiza os dados de uma determinada localização
             </summary>
@@ -122,14 +122,14 @@
             <param name="id">id da presença</param>
             <returns>Presença específica</returns>
         </member>
-        <member name="M:backend.Controllers.PresencaController.Post(backend.Models.Presenca)">
+        <member name="M:backend.Controllers.PresencaController.Post(backend.Domains.Presenca)">
             <summary>
             Adiciona uma nova presença
             </summary>
             <param name="Presenca">nome da presença</param>
             <returns>presença adicionada</returns>
         </member>
-        <member name="M:backend.Controllers.PresencaController.Put(System.Int32,backend.Models.Presenca)">
+        <member name="M:backend.Controllers.PresencaController.Put(System.Int32,backend.Domains.Presenca)">
             <summary>
             atualiza os dados de uma presença específica
             </summary>
@@ -157,14 +157,14 @@
             <param name="id">id do tipo do usuário</param>
             <returns>tipo de usuário específiico</returns>
         </member>
-        <member name="M:backend.Controllers.TipoUsuarioController.Post(backend.Models.TipoUsuario)">
+        <member name="M:backend.Controllers.TipoUsuarioController.Post(backend.Domains.TipoUsuario)">
             <summary>
             Adiciona um novo tipo de usuário
             </summary>
             <param name="TipoUsuario">nome do tipo de usuário</param>
             <returns>tabela tualizada</returns>
         </member>
-        <member name="M:backend.Controllers.TipoUsuarioController.Put(System.Int32,backend.Models.TipoUsuario)">
+        <member name="M:backend.Controllers.TipoUsuarioController.Put(System.Int32,backend.Domains.TipoUsuario)">
             <summary>
             Atualiza os dados de um tipo de usuário específico
             </summary>
@@ -192,14 +192,14 @@
             <param name="id">id do usuário</param>
             <returns>usuário específico</returns>
         </member>
-        <member name="M:backend.Controllers.UsuarioController.Post(backend.Models.Usuario)">
+        <member name="M:backend.Controllers.UsuarioController.Post(backend.Domains.Usuario)">
             <summary>
             Adiciona um novo usuário
             </summary>
             <param name="Usuario">nome do usuário</param>
             <returns>tabela atualizada</returns>
         </member>
-        <member name="M:backend.Controllers.UsuarioController.Put(System.Int32,backend.Models.Usuario)">
+        <member name="M:backend.Controllers.UsuarioController.Put(System.Int32,backend.Domains.Usuario)">
             <summary>
             Atualiza os dados de um usuário específico
             </summary>
