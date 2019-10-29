@@ -3,32 +3,28 @@ using System.Threading.Tasks;
 using backend.Domains;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using backend.Repositories;
 
 namespace backend.Controllers {
-     //definindo a rota do controller e informando que é um controle de API
     [Route ("api/[Controller]")]
     [ApiController]
     public class TipoUsuarioController : ControllerBase {
-        //instanciando o contexto
-        GufosContext _contexto = new GufosContext ();
+        
+        TipoUsuarioRepository _repositorio = new TipoUsuarioRepository();
 
-        //iniciando o método REST (CRUD)
-
-        //GET: api/TipoUsuario
-        //método assincrono executa vários processos simultaneamente
+        
         /// <summary>
         /// Pega os tipos de usuário cadastrados
         /// </summary>
         /// <returns>Lista de tipos de usuários</returns>
         [HttpGet]
         public async Task<ActionResult<List<TipoUsuario>>> Get () {
-            var TipoUsuarios = await _contexto.TipoUsuario.ToListAsync ();
+            var TipoUsuarios = await _repositorio.Listar ();
 
             if (TipoUsuarios == null) {
                 return NotFound ();
             }
             return TipoUsuarios;
-
         }
 
         //GET: api/TipoUsuario/2
@@ -39,13 +35,12 @@ namespace backend.Controllers {
         /// <returns>tipo de usuário específiico</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<TipoUsuario>> Get (int id) {
-            var TipoUsuario = await _contexto.TipoUsuario.FindAsync (id);
+            var TipoUsuario = await _repositorio.BuscarPorId (id);
 
             if (TipoUsuario == null) {
                 return NotFound ();
             }
             return TipoUsuario;
-
         }
 
         //POST api/TipoUsuario
@@ -57,11 +52,7 @@ namespace backend.Controllers {
         [HttpPost]
         public async Task<ActionResult<TipoUsuario>> Post (TipoUsuario TipoUsuario) {
             try {
-                //adicionando o objeto TipoUsuario dentro do contexto
-                //salva as mudanças feitas
-                //tratamento de ataques de Sql Injection
-                await _contexto.AddAsync (TipoUsuario);
-                await _contexto.SaveChangesAsync ();
+                await _repositorio.Salvar (TipoUsuario);
             } catch (DbUpdateConcurrencyException) {
                 throw;
             }
@@ -81,15 +72,11 @@ namespace backend.Controllers {
                 return BadRequest ();
             }
 
-            //dps de verificada a entrada, faz uma comparação dos atributos que foram mudados
-            _contexto.Entry (TipoUsuario).State = EntityState.Modified;
-
             try {
-                await _contexto.SaveChangesAsync ();
+                await _repositorio.Alterar (TipoUsuario);
             } catch (DbUpdateConcurrencyException) {
 
-                //verificando se o objeto inserido realmente existe no banco
-                var TipoUsuario_valida = await _contexto.TipoUsuario.FindAsync (id);
+                var TipoUsuario_valida = await _repositorio.BuscarPorId (id);
 
                 if (TipoUsuario_valida == null) {
                     return NotFound ();
@@ -97,7 +84,6 @@ namespace backend.Controllers {
                     throw;
                 }
             }
-
             return NoContent ();
         }
 
@@ -110,15 +96,11 @@ namespace backend.Controllers {
         [HttpDelete ("{id}")]
         public async Task<ActionResult<TipoUsuario>> Delete (int id) {
 
-            var TipoUsuario = await _contexto.TipoUsuario.FindAsync (id);
+            var TipoUsuario = await _repositorio.BuscarPorId (id);
             if (TipoUsuario == null) {
                 return NotFound();
             }
-
-            //remove o conteúdo
-            _contexto.TipoUsuario.Remove(TipoUsuario);
-            await _contexto.SaveChangesAsync();
-
+            await _repositorio.Excluir(TipoUsuario);
             return TipoUsuario;
         }
 

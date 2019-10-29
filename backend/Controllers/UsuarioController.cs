@@ -4,33 +4,28 @@ using backend.Domains;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using backend.Repositories;
 
 namespace backend.Controllers {
-     //definindo a rota do controller e informando que é um controle de API
     [Route ("api/[Controller]")]
     [ApiController]
     [Authorize]
     public class UsuarioController : ControllerBase {
-        //instanciando o contexto
-        GufosContext _contexto = new GufosContext ();
+        
+        UsuarioRepository _repositorio = new UsuarioRepository();
 
-        //iniciando o método REST (CRUD)
-
-        //GET: api/Usuario
-        //método assincrono executa vários processos simultaneamente
         /// <summary>
         /// Pega os usuários cadastrados
         /// </summary>
         /// <returns>Lista de usuários</returns>
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get () {
-            var Usuarios = await _contexto.Usuario.ToListAsync ();
+            var Usuarios = await _repositorio.Listar ();
 
             if (Usuarios == null) {
                 return NotFound ();
             }
             return Usuarios;
-
         }
 
         //GET: api/Usuario/2
@@ -41,7 +36,7 @@ namespace backend.Controllers {
         /// <returns>usuário específico</returns>
         [HttpGet ("{id}")]
         public async Task<ActionResult<Usuario>> Get (int id) {
-            var Usuario = await _contexto.Usuario.FindAsync (id);
+            var Usuario = await _repositorio.BuscarPorId(id);
 
             if (Usuario == null) {
                 return NotFound ();
@@ -59,11 +54,8 @@ namespace backend.Controllers {
         [HttpPost]
         public async Task<ActionResult<Usuario>> Post (Usuario Usuario) {
             try {
-                //adicionando o objeto Usuario dentro do contexto
-                //salva as mudanças feitas
-                //tratamento de ataques de Sql Injection
-                await _contexto.AddAsync (Usuario);
-                await _contexto.SaveChangesAsync ();
+                
+                await _repositorio.Salvar (Usuario);
             } catch (DbUpdateConcurrencyException) {
                 throw;
             }
@@ -83,15 +75,11 @@ namespace backend.Controllers {
                 return BadRequest ();
             }
 
-            //dps de verificada a entrada, faz uma comparação dos atributos que foram mudados
-            _contexto.Entry (Usuario).State = EntityState.Modified;
-
             try {
-                await _contexto.SaveChangesAsync ();
+                await _repositorio.Alterar (Usuario);
             } catch (DbUpdateConcurrencyException) {
 
-                //verificando se o objeto inserido realmente existe no banco
-                var Usuario_valida = await _contexto.Usuario.FindAsync (id);
+                var Usuario_valida = await _repositorio.BuscarPorId(id);
 
                 if (Usuario_valida == null) {
                     return NotFound ();
@@ -99,7 +87,6 @@ namespace backend.Controllers {
                     throw;
                 }
             }
-
             return NoContent ();
         }
 
@@ -112,15 +99,11 @@ namespace backend.Controllers {
         [HttpDelete ("{id}")]
         public async Task<ActionResult<Usuario>> Delete (int id) {
 
-            var Usuario = await _contexto.Usuario.FindAsync (id);
+            var Usuario = await _repositorio.BuscarPorId (id);
             if (Usuario == null) {
                 return NotFound();
             }
-
-            //remove o conteúdo
-            _contexto.Usuario.Remove(Usuario);
-            await _contexto.SaveChangesAsync();
-
+            await _repositorio.Excluir(Usuario);
             return Usuario;
         }
 
